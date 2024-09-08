@@ -1,0 +1,82 @@
+<template>
+  <div class="demo-page">
+    <input class="button" type="button" value="i" @click="routeList"/>
+    <text class="title">快来选择你心仪的铸币大头吧！</text>
+    <image id="chibi" src="{{chibi}}" @click="change_chibi"/>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+
+const sleep = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, timeout)
+  })
+}
+
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  public: {
+    num: 1,
+    chibi: '/pic/zhubi1.jpg',
+    toggle: false
+  },
+
+  routeList() {
+    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+    router.push({
+      uri: '/pages/about'
+    })
+  },
+
+  async change_chibi() {
+    this.toggle = !this.toggle
+    if (this.toggle) {
+      for (let i = this.num; this.num < 44; i++) {
+        if (i == 44) {
+          i = 1
+        }
+        await sleep(10)
+        this.num = i
+        this.chibi = `/pic/zhubi${i}.jpg`
+        if (!this.toggle) break
+        console.log(this.num)
+    }
+  }
+  }
+}
+</script>
+
+<style>
+.button {
+  position: absolute;
+  top: 8px;
+  font-weight: bolder;
+  width: 100px;
+  color: #fff;
+  background-color: #333;
+  border-color: #666;
+}
+
+#chibi {
+  object-fit: scale-down;
+  height: 150px;
+  margin-top: 20px;
+}
+
+.demo-page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+</style>
