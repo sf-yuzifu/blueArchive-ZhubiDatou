@@ -1,18 +1,19 @@
 <template>
   <div class="container">
-    <input class="button" type="button" value="<" @click="routeList"/>
+    <img class="button" src="/common/back.png" @click="routeList" />
     <div id="info">
       <div id="inner">
         <image id="logo" style="width: 60px" src="/common/logo96.png">
-        <text id="version" class="sub">1.0</text>
+          <text id="version" class="sub">{{ver}}</text>
       </div>
       <text class="bold" style="color: #fff;font-size:33px">铸币大头</text>
     </div>
     <div id="copyright">
       <text class="sub re bold">作者</text>
       <text class="bold" style="color: #fff;">小鱼yuzifu</text>
-      <div style="width: 1px;height:40px"></div>
+      <div style="width: 1px;height:15px"></div>
       <text class="sub re bold">图源</text>
+      <text class="bold" style="color: #fff;">星星辰无雨</text>
       <text class="bold" style="color: #fff;">困倦沙拉</text>
     </div>
   </div>
@@ -20,8 +21,13 @@
 
 <script>
 import router from '@system.router'
+import app from '@system.app' 
 
 export default {
+  private: {
+    ver: app.getInfo().versionName
+  },
+
   routeList() {
     // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
     router.back()
@@ -31,13 +37,10 @@ export default {
 
 <style>
 .button {
-  margin-top: 8px;
+  margin-top: 6px;
   margin-bottom: 8px;
   font-weight: bolder;
-  width: 100px;
   color: #fff;
-  background-color: #333;
-  border-color: #666;
 }
 
 .container {
@@ -50,10 +53,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #666d;
-  border-radius: 10px;
-  padding: 10px;
-  width: 160px;
+  border: 3px solid rgba(255, 255, 255, 0.06);
+  background-color: #262626;
+  border-radius: 20px;
+  padding: 15px 10px;
+  width: 180px;
 }
 
 #inner {
@@ -71,14 +75,14 @@ export default {
 }
 
 #copyright {
-  margin-top: 20px;
+  margin-top: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .sub {
-  color: #333;
+  color: #666;
 }
 
 .re {
@@ -86,6 +90,6 @@ export default {
 }
 
 .bold {
-  font-weight: bolder;
+  font-weight: bold;
 }
 </style>

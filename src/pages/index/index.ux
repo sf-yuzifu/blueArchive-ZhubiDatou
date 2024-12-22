@@ -1,6 +1,6 @@
 <template>
   <div class="demo-page">
-    <input class="button" type="button" value="i" @click="routeList"/>
+    <img src="/common/info.png" onclick="routeList" style="position: absolute;left: 45px; top: 6px;"/>
     <text class="title">快来选择你心仪的铸币大头吧！</text>
     <image id="chibi" src="{{chibi}}" @click="change_chibi"/>
   </div>
@@ -35,15 +35,14 @@ export default {
   async change_chibi() {
     this.toggle = !this.toggle
     if (this.toggle) {
-      for (let i = this.num; this.num < 44; i++) {
-        if (i == 44) {
+      for (let i = this.num; this.num < 76; i++) {
+        if (i == 76) {
           i = 1
         }
         await sleep(10)
         this.num = i
         this.chibi = `/pic/zhubi${i}.jpg`
         if (!this.toggle) break
-        console.log(this.num)
     }
   }
   }
