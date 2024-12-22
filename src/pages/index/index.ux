@@ -1,7 +1,9 @@
 <template>
   <div class="demo-page">
-    <img src="/common/info.png" onclick="routeList" style="position: absolute;left: 45px; top: 6px;"/>
-    <text class="title">快来选择你心仪的铸币大头吧！</text>
+    <img src="/common/back.png" onclick="routeList" style="position: absolute;left: 6px; top: 6px;"/>
+    <img src="/common/info.png" onclick="about" style="position: absolute;right: 6px; top: 6px;"/>
+    <text class="title">快来选择你心仪的</text>
+    <text class="title">铸币大头吧！</text>
     <image id="chibi" src="{{chibi}}" @click="change_chibi"/>
   </div>
 </template>
@@ -26,6 +28,11 @@ export default {
   },
 
   routeList() {
+    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+    router.back()
+  },
+
+  about() {
     // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
     router.push({
       uri: '/pages/about'
@@ -62,7 +69,7 @@ export default {
 
 #chibi {
   object-fit: scale-down;
-  height: 150px;
+  height: 175px;
   margin-top: 20px;
 }
 
@@ -73,7 +80,7 @@ export default {
 }
 
 .title {
-  font-size: 24px;
+  font-size: 28px;
   text-align: center;
   font-weight: bold;
   color: #fff;
